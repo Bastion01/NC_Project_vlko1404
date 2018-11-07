@@ -11,11 +11,13 @@ import java.io.IOException;
 public class DeleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserDAOImplementation model = UserDAOImplementation.getInstance();
-        Integer Id = (Integer)request.getAttribute("id");
-        model.deleteUser(Id);
+        String id = request.getParameter("buttonDeleteValue");
+        if(id != null) {
+            model.deleteUser(Integer.parseInt(id));
+        }
 
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/list.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/delete.jsp");
         requestDispatcher.forward(request, response);
 
 
@@ -24,6 +26,6 @@ public class DeleteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/add.jsp");
-        requestDispatcher.forward(request, response);
+
     }
 }

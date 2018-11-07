@@ -10,21 +10,24 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class UpdateServlet extends HttpServlet {
+    int id_user = 0;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String password = request.getParameter("pass");
-        String id = request.getParameter("id");
-        System.out.println(name);
-        System.out.println(password);
-        System.out.println(id);
-        if(id!=null) {
-            User user = new User(Integer.parseInt(id), name, password);
+        String buttonvalue = request.getParameter("buttonUpdateValue");
+        request.setAttribute("userName", name);
+        if(buttonvalue != null) {
+            id_user = Integer.parseInt(buttonvalue);
+        }
+
+        request.setAttribute("buttonUpdateValue",buttonvalue);
+        if((Integer)id_user!=null) {
+            User user = new User(id_user, name, password);
 
             UserDAOImplementation model = UserDAOImplementation.getInstance();
             model.updateUser(user);
         }
 
-        request.setAttribute("userName", name);
 
         doGet(request, response);
     }

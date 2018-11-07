@@ -12,7 +12,7 @@
 <div>
     <%
         if (request.getAttribute("userName") != null) {
-            out.println("<p>User '" + request.getAttribute("userName") + "' updated!</p>");
+            out.println("<p>This user was updated!</p>");
         }
     %>
     <div>
@@ -21,14 +21,12 @@
         </div>
         <form method="post">
             <label>Name:
-                <input type="text" name="name"><br />
+                <input type="text" name="name" value="New Name"><br />
             </label>
             <label>Password:
-                <input type="password" name="pass"><br />
+                <input type="password" name="pass" value="New Password"><br />
             </label>
-            <label>Id:
-                <input type="text" name="id"><br />
-            </label>
+
             <button type="submit">Submit</button>
 
 
