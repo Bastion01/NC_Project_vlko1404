@@ -24,7 +24,7 @@
         <div class="w3-container w3-green">
             <h2>Add user</h2>
         </div>
-
+<%--stroka--%>
         <form method="post" class="w3-selection w3-light-grey w3-padding">
             <label>Name:
                 <input class="w3-input" type="text" name="name"><br />
