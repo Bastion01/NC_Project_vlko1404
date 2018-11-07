@@ -1,0 +1,36 @@
+package app.servlets;
+import app.dao.UserDAOImplementation;
+import app.entities.User;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+public class UpdateServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        String password = request.getParameter("pass");
+        String id = request.getParameter("id");
+        System.out.println(name);
+        System.out.println(password);
+        System.out.println(id);
+        if(id!=null) {
+            User user = new User(Integer.parseInt(id), name, password);
+
+            UserDAOImplementation model = UserDAOImplementation.getInstance();
+            model.updateUser(user);
+        }
+
+        request.setAttribute("userName", name);
+
+        doGet(request, response);
+    }
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/update.jsp");
+        requestDispatcher.forward(request, response);
+    }
+}
