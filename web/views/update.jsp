@@ -2,40 +2,42 @@
 <html>
 <head>
     <title>Update user</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
-<body>
-<div>
+<body class="w3-light-grey">
+<div class="w3-container w3-blue-grey w3-opacity w3-right-align">
     <h1>Super app!</h1>
 </div>
 
-<div>
+<div class="w3-container w3-padding">
     <%
         if (request.getAttribute("userName") != null) {
-            out.println("<p>This user was updated!</p>");
+            out.println("<div class=\"w3-panel w3-green w3-display-container w3-card-4 w3-round\">\n" +
+                    "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
+                    "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-green w3-border w3-border-green w3-hover-border-grey\">×</span>\n" +
+                    "   <h5>This user updated!</h5>\n" +
+                    "</div>");
         }
     %>
-    <div>
-        <div>
+    <div class="w3-card-4">
+        <div class="w3-container w3-green">
             <h2>Update user</h2>
         </div>
-        <form method="post">
+
+        <form method="post" class="w3-selection w3-light-grey w3-padding">
             <label>Name:
-                <input type="text" name="name" value="New Name"><br />
+                <input class="w3-input" type="text" name="name" value = "New User"><br />
             </label>
             <label>Password:
-                <input type="password" name="pass" value="New Password"><br />
+                <input class="w3-input" type="password" name="pass" value = "New Password"><br />
             </label>
-
-            <button type="submit">Submit</button>
-
-
+            <button class="w3-input" type="submit">Submit</button>
         </form>
     </div>
 </div>
-
-<div>
-    <button onclick="location.href='/'">Back to main</button>
+<div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
+    <button class="w3-btn w3-round-large" onclick="location.href='/'">Back to main</button>
 </div>
 </body>
 </html>
