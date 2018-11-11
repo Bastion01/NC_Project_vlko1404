@@ -1,5 +1,5 @@
 package app.servlets;
-import app.dao.UserDAOImplementation;
+import app.dao.CompanyDAOImplementation;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class DeleteServlet extends HttpServlet {
+public class DeleteCompanyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserDAOImplementation model = UserDAOImplementation.getInstance();
+        CompanyDAOImplementation model = CompanyDAOImplementation.getInstance();
         String id = request.getParameter("buttonDeleteValue");
         if(id != null) {
-            model.deleteUser(Integer.parseInt(id));
+            model.deleteCompany(Integer.parseInt(id));
         }
 
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/delete.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/deletecompany.jsp");
         requestDispatcher.forward(request, response);
 
 
@@ -25,7 +25,6 @@ public class DeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/add.jsp");
 
     }
 }

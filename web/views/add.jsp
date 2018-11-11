@@ -40,4 +40,5 @@
     <button class="w3-btn w3-round-large" onclick="location.href='/'">Back to main</button>
 </div>
 </body>
+<%%>
 </html>

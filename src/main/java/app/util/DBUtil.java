@@ -10,7 +10,7 @@ import java.util.Properties;
 public class DBUtil {
 
     private static Connection conn;
-
+//
     public static Connection getConnection() {
 
         if( conn != null )

@@ -1,5 +1,6 @@
 package app.servlets;
 import app.dao.UserDAOImplementation;
+import app.entities.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -7,26 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
-public class DeleteServlet extends HttpServlet {
+public class JoinServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserDAOImplementation model = UserDAOImplementation.getInstance();
-        String id = request.getParameter("buttonDeleteValue");
-        if(id != null) {
-            model.deleteUser(Integer.parseInt(id));
-        }
-
-
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/delete.jsp");
-        requestDispatcher.forward(request, response);
-
-
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UserDAOImplementation model = UserDAOImplementation.getInstance();
+        List<User> users = model.getJoin();
+        request.setAttribute("joinNames", users);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/add.jsp");
-
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/joinlist.jsp");
+        requestDispatcher.forward(request, response);
     }
 }
 //

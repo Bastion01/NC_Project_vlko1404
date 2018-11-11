@@ -1,6 +1,6 @@
 package app.servlets;
-import app.dao.UserDAOImplementation;
-import app.entities.User;
+import app.dao.CompanyDAOImplementation;
+import app.entities.Company;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class ListServlet extends HttpServlet {
+public class ListCompaniesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
-@Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    UserDAOImplementation model = UserDAOImplementation.getInstance();
-    List<User> users = model.getAllUsers();
+        CompanyDAOImplementation model = CompanyDAOImplementation.getInstance();
+        List<Company> companies = model.getAllCompanies();
 
 
-    request.setAttribute("userNames", users);
+        request.setAttribute("companiesNames", companies);
 
-    RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/list.jsp");
-    requestDispatcher.forward(request, response);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/listcompanies.jsp");
+        requestDispatcher.forward(request, response);
     }
 }
 //

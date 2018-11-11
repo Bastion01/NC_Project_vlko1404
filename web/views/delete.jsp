@@ -12,7 +12,7 @@
 <div class="w3-container w3-green">
     <h2>This user was deleted!</h2>
 </div>
-<%--stroka--%>
+<%%>
 <div>
 </div>
 
