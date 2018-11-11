@@ -1,5 +1,6 @@
 # NC_Project_vlko1404
 Initial version
+Пока без gitignore'а,увы
 database name jobs, port:3306
 create table companies
 (
@@ -26,4 +27,5 @@ create table peoples
 create index peoples___company_id
 	on peoples (company_id)
 ;
+Удалять компании не рекомендую,хотя это и работает - выкидывает ошибки,ведь пользователя остаются без работы
 
