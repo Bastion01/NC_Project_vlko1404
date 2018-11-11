@@ -23,6 +23,7 @@ public class DBUtil {
             String driver = properties.getProperty( "driver" );
             String url = "jdbc:mysql://localhost:3306/jobs"+
                     "?verifyServerCertificate=false"+
+                    "&allowPublicKeyRetrieval=true" +
                     "&useSSL=false"+
                     "&requireSSL=false"+
                     "&useLegacyDatetimeCode=false"+

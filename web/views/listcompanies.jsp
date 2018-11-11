@@ -1,9 +1,9 @@
 <%@ page import="java.util.List" %>
-<%@ page import="app.entities.User" %>
+<%@ page import="app.entities.Company" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Users</title>
+    <title>Companies</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
@@ -15,42 +15,41 @@
 <div class="w3-container w3-padding">
     <div class="w3-card-4">
         <div class="w3-container w3-green">
-            <h2>Users</h2>
+            <h2>Companies</h2>
         </div>
+        <%%>
         <%
-            List<User> users = (List<User>)request.getAttribute("userNames");
-            if (users != null && !users.isEmpty()) {
+            List<Company>   companies= (List<Company>)request.getAttribute("companiesNames");
+            if (companies != null && !companies.isEmpty()) {
                 out.println("<table class=\"w3-table w3-striped w3-border\"");
-                ///костыль для подписи названий колонок,или так и нужно делать адекватно?
                 out.println("<tr >");
-                out.println("<td>"+"User ID"+"</td>");
-                out.println("<td>"+"User Name"+"</td>");
-                out.println("<td>"+"User Password"+"</td>");  // NO SECURITY
-                out.println("<td>"+"User JobID"+"</td>");
+                out.println("<td>"+"Company ID"+"</td>");
+                out.println("<td>"+"Company Name"+"</td>");
+                out.println("<td>"+"Workers amount"+"</td>");
+                out.println("<td>"+"Rating"+"</td>");
                 out.println("</tr>");
                 out.println("<tr >");
                 out.println("<td> </td>");
                 out.println("</tr >");
-                for (User s : users) {
+                for (Company s : companies) {
                     out.println("<tr >");
-                    out.println("<td>"+s.getId()+"</td>");
+                    out.println("<td>"+s.getJobId()+"</td>");
 
 
                     out.println("<td>"+s.getName()+"</td>");
-                    out.println("<td>"+s.getPassword()+"</td>");
-                    out.println("<td>"+s.getCompany_id()+"</td>");
+                    out.println("<td>"+s.getWorkers()+"</td>");
+                    out.println("<td>"+s.getRating()+"</td>");
                     out.println("<td>"+"<form class=\"w3-selection w3-light-grey w3-padding\" " +
-                            "action=\"/delete\" method=\"post\">\n" +
-                            "<button value='"+s.getId() +
+                            "action=\"/deletecompany\" method=\"post\">\n" +
+                            "<button value='"+s.getJobId() +
                             "' name=\"buttonDeleteValue\" type=\"submit\">Delete</button>\n" +
                             "</form>"+"</td>");
 
                     out.println("<td>"+"<form class=\"w3-selection w3-light-grey w3-padding\" " +
-                            "action=\"/update\" method=\"post\">\n" +
-                            "<button value='"+s.getId() +
+                            "action=\"/updatecompany\" method=\"post\">\n" +
+                            "<button value='"+s.getJobId() +
                             "' name=\"buttonUpdateValue\" type=\"submit\">Update</button>\n" +
                             "</form>"+ "</td>");
-                    session.setAttribute("newAttr",s.getId());
 
                     out.println("</tr>");
                 }
@@ -74,4 +73,3 @@
 </div>
 </body>
 </html>
-<%%>

@@ -25,10 +25,11 @@ public class UserDAOImplementation implements UserDAO {
     @Override
     public void addUser( User user ) {
         try {
-            String query = "insert into peoples (fname, password ) values (?,?)";
+            String query = "insert into peoples (fname, password, company_id ) values (?,?,?)";
             PreparedStatement preparedStatement = conn.prepareStatement( query );
             preparedStatement.setString( 1, user.getName() );
             preparedStatement.setString( 2, user.getPassword() );
+            preparedStatement.setInt(3, user.getCompany_id());
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {
@@ -50,11 +51,12 @@ public class UserDAOImplementation implements UserDAO {
     @Override
     public void updateUser( User user ) {
         try {
-            String query = "update peoples set fname = ?,password = ? where id = ?";
+            String query = "update peoples set fname = ?,password = ?, company_id = ? where id = ?";
             PreparedStatement preparedStatement = conn.prepareStatement( query );
             preparedStatement.setString( 1, user.getName() );
             preparedStatement.setString( 2, user.getPassword() );
-            preparedStatement.setInt(3,user.getId());
+            preparedStatement.setInt(3,user.getCompany_id());
+            preparedStatement.setInt(4,user.getId());
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {
@@ -72,6 +74,29 @@ public class UserDAOImplementation implements UserDAO {
                 user.setId( resultSet.getInt( "id" ) );
                 user.setName( resultSet.getString( "fname" ) );
                 user.setPassword( resultSet.getString( "password" ) );
+                user.setCompany_id(resultSet.getInt("company_id"));
+                users.add(user);
+            }
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+    //
+    public List<User> getJoin() {
+        List<User> users = new ArrayList<User>();
+        try {
+            Statement statement = conn.createStatement();
+            ResultSet resultSet =
+                    statement.executeQuery( "select p.fname, c.name, c.rating from peoples p, companies c " +
+                            "where p.company_id = c.id;" );
+            while( resultSet.next() ) {
+                User user = new User();
+                user.setName( resultSet.getString( "fname" ) );
+                user.getCompany().setName(resultSet.getString("name"));
+                user.getCompany().setRating(resultSet.getInt("rating"));
                 users.add(user);
             }
             resultSet.close();
@@ -93,6 +118,7 @@ public class UserDAOImplementation implements UserDAO {
                 user.setId(resultSet.getInt("id"));
                 user.setName( resultSet.getString( "fname" ) );
                 user.setPassword( resultSet.getString( "password" ) );
+                user.setCompany_id(resultSet.getInt("company_id"));
 
             }
             resultSet.close();

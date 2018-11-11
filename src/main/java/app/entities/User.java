@@ -4,22 +4,28 @@ public class User {
     private int user_id;
     private String name;
     private String password;
+    private int company_id;
+    private Company company = new Company();
 
-
+    public Company getCompany(){return this.company;}
     public User() {
     }
 
-    public User(int user_id,String name, String password) {
+    public User(int user_id,String name, String password, int company_id) {
         this.user_id = user_id;
         this.name = name;
         this.password = password;
+        this.company_id = company_id;
     }
-
-    public User(String name, String password) {
+//
+    public User(String name, String password, int company_id) {
        // this.user_id = user_id;
         this.name = name;
         this.password = password;
+        this.company_id = company_id;
     }
+    public void setCompany_id(int company_id){this.company_id = company_id;}
+    public int getCompany_id(){return this.company_id;}
 
     public String getName() {
         return name;

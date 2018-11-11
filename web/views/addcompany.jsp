@@ -1,5 +1,3 @@
-<%@ page import="app.entities.Company" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,11 +12,11 @@
 
 <div class="w3-container w3-padding">
     <%
-        if (request.getAttribute("userName") != null) {
+        if (request.getAttribute("companyName") != null) {
             out.println("<div class=\"w3-panel w3-green w3-display-container w3-card-4 w3-round\">\n" +
                     "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
                     "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-green w3-border w3-border-green w3-hover-border-grey\">×</span>\n" +
-                    "   <h5>User '" + request.getAttribute("userName") + "' added!</h5>\n" +
+                    "   <h5>User '" + request.getAttribute("companyName") + "' added!</h5>\n" +
                     "</div>");
         }
     %>
@@ -26,26 +24,16 @@
         <div class="w3-container w3-green">
             <h2>Add user</h2>
         </div>
-<%--stroka--%>
+        <%--stroka--%>
         <form method="post" class="w3-selection w3-light-grey w3-padding">
             <label>Name:
                 <input class="w3-input" type="text" name="name"><br />
             </label>
-            <label>Password:
-                <input class="w3-input" type="password" name="pass"><br />
+            <label>Workers number:
+                <input class="w3-input" type="text" name="workers_number"><br />
             </label>
-            <label>Select you job:
-                <p><select class="w3-input" size="1" name="company">
-                    <option class ="w3-input" disabled>Select job</option>
-                    <%
-                        List<Company>companies= (List<Company>)request.getAttribute("companiesNames");
-                        if (companies != null && !companies.isEmpty()) {
-                            for(Company c:companies) {
-                                out.println("<option  class =\"w3-input\" value=\"" +c.getJobId()+"\">"+c.getName()+"</option>");
-                            }
-                        }
-                    %>
-                </select></p>
+            <label>Rating:
+                <input class="w3-input" type="text" name="rating"><br />
             </label>
             <button class="w3-input" type="submit">Submit</button>
         </form>
@@ -54,6 +42,6 @@
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
     <button class="w3-btn w3-round-large" onclick="location.href='/'">Back to main</button>
 </div>
-</body>
 <%%>
+</body>
 </html>

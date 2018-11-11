@@ -44,6 +44,55 @@
         <url-pattern>/update</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>listcompanies</servlet-name>
+        <servlet-class>app.servlets.ListCompaniesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>listcompanies</servlet-name>
+        <url-pattern>/listcompanies</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addcompany</servlet-name>
+        <servlet-class>app.servlets.AddCompanyServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>addcompany</servlet-name>
+        <url-pattern>/addcompany</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deletecompany</servlet-name>
+        <servlet-class>app.servlets.DeleteCompanyServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>deletecompany</servlet-name>
+        <url-pattern>/deletecompany</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>updatecompany</servlet-name>
+        <servlet-class>app.servlets.UpdateCompanyServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>updatecompany</servlet-name>
+        <url-pattern>/updatecompany</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>joinlist</servlet-name>
+        <servlet-class>app.servlets.JoinServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>joinlist</servlet-name>
+        <url-pattern>/joinlist</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>
